@@ -1,12 +1,17 @@
 # Databricks notebook source
-path="abfss://pyspark@sakimo2023.dfs.core.windows.net/processed/circuits"
+# MAGIC %run "../PySpark Udemy course - includes/Configuration"
+
+# COMMAND ----------
+
+from pyspark.sql.types import * 
+from pyspark.sql.functions import *
 
 # COMMAND ----------
 
 df_circuits = spark.read \
     .option('header', True) \
     .option('inferSchema', True) \
-    .csv("abfss://pyspark@sakimo2023.dfs.core.windows.net/raw/circuits.csv")
+    .csv(f"{raw_folder_path}/circuits.csv")
 
 
 # COMMAND ----------
@@ -80,20 +85,6 @@ display(df_circuits)
 
 # COMMAND ----------
 
-df_circuits.write.mode('overwrite').parquet("abfss://pyspark@sakimo2023.dfs.core.windows.net/processed/circuits")
-
-# COMMAND ----------
-
-# MAGIC %fs
-# MAGIC ls abfss://pyspark@sakimo2023.dfs.core.windows.net/processed/circuits
-
-# COMMAND ----------
-
-df= spark.read.parquet(path)
-display(df)
-
-# COMMAND ----------
-
 df_circuits=df_circuits.drop('url')
 
 # COMMAND ----------
@@ -102,4 +93,4 @@ display(df_circuits)
 
 # COMMAND ----------
 
-
+df_circuits.write.mode('overwrite').parquet(f"{processed_folder_path}/circuits")

@@ -65,4 +65,8 @@ drivers_final_df.write.mode("overwrite").parquet('abfss://pyspark@sakimo2023.dfs
 
 # COMMAND ----------
 
+display(drivers_final_df)
+
+# COMMAND ----------
+
 

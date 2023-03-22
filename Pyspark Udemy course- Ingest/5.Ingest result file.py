@@ -52,4 +52,8 @@ results_final_df.write.mode("overwrite").partitionBy('race_id').parquet("abfss:/
 
 # COMMAND ----------
 
+display(results_final_df)
+
+# COMMAND ----------
+
 

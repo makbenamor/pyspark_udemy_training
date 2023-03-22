@@ -34,3 +34,7 @@ final_df = pit_stops_df.withColumnRenamed("driverId", "driver_id") \
 # COMMAND ----------
 
 final_df.write.mode("overwrite").parquet("abfss://pyspark@sakimo2023.dfs.core.windows.net/processed/pitstops")
+
+# COMMAND ----------
+
+display(final_df)
