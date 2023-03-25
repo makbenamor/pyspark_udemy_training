@@ -124,7 +124,7 @@ race_results_df.display()
 
 # COMMAND ----------
 
-df_final = race_results_df.select('race_year','race_name', 'race_date', 'circuit_location','driver_name','driver_number', 'driver_nationality', 'team' ,'grid' , col('fastest_lap').alias('fastest lap'), col('race_time').alias('race time'), 'points', 'position' ).withColumn('created_date', current_timestamp())
+df_final = race_results_df.select('race_year','race_name', 'race_date', 'circuit_location','driver_name','driver_number', 'driver_nationality', 'team' ,'grid' , col('fastest_lap'), col('race_time'), 'points', 'position' ).withColumn('created_date', current_timestamp())
 
 # COMMAND ----------
 
