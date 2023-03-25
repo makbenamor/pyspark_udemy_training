@@ -3,6 +3,16 @@
 
 # COMMAND ----------
 
+# MAGIC %run "../PySpark Udemy course - includes/common_functions"
+
+# COMMAND ----------
+
+dbutils.widgets.text('p_data_source','')
+widget_value=dbutils.widgets.get('p_data_source')
+widget_value
+
+# COMMAND ----------
+
 from pyspark.sql.types import * 
 from pyspark.sql.functions import *
 
@@ -69,7 +79,8 @@ from pyspark.sql.functions import *
 
 df_circuits= circuits_selected_df.withColumnRenamed("lat","latitude") \
 .withColumnRenamed("lng","longitude") \
-.withColumnRenamed("alt","altitude")
+.withColumnRenamed("alt","altitude") \
+.withColumn('source',lit(widget_value))
 
 # COMMAND ----------
 
@@ -77,7 +88,7 @@ df_circuits.show()
 
 # COMMAND ----------
 
-df_circuits= df_circuits.withColumn("ingestion_date",current_timestamp())
+df_circuits= add_ingestion_date(df_circuits)
 
 # COMMAND ----------
 
@@ -94,3 +105,15 @@ display(df_circuits)
 # COMMAND ----------
 
 df_circuits.write.mode('overwrite').parquet(f"{processed_folder_path}/circuits")
+
+# COMMAND ----------
+
+dbutils.widgets.help()
+
+# COMMAND ----------
+
+dbutils.widgets.text('p_data_source','')
+
+# COMMAND ----------
+
+dbutils.notebook.exit("1. ingests Circuits - Success")

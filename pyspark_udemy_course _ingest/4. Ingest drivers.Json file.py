@@ -38,10 +38,6 @@ drivers_df = spark.read \
 
 # COMMAND ----------
 
-display(drivers_df)
-
-# COMMAND ----------
-
 from pyspark.sql.functions import col, concat, current_timestamp, lit
 
 # COMMAND ----------
@@ -53,10 +49,6 @@ drivers_with_columns_df = drivers_df.withColumnRenamed("driverId", "driver_id") 
 
 # COMMAND ----------
 
-drivers_with_columns_df.display()
-
-# COMMAND ----------
-
 drivers_final_df = drivers_with_columns_df.drop(col("url"))
 
 # COMMAND ----------
@@ -65,8 +57,4 @@ drivers_final_df.write.mode("overwrite").parquet('abfss://pyspark@sakimo2023.dfs
 
 # COMMAND ----------
 
-display(drivers_final_df)
-
-# COMMAND ----------
-
-
+dbutils.notebook.exit("4. Ingest drivers.Json file - Success")

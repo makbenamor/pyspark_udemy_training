@@ -38,3 +38,7 @@ final_df.write.mode("overwrite").parquet("abfss://pyspark@sakimo2023.dfs.core.wi
 # COMMAND ----------
 
 display(final_df)
+
+# COMMAND ----------
+
+dbutils.notebook.exit("6.ingest pitstops - Success")

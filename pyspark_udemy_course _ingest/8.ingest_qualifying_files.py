@@ -43,4 +43,4 @@ display(final_df)
 
 # COMMAND ----------
 
-
+dbutils.notebook.exit("8.ingest_qualifying_files - Success")

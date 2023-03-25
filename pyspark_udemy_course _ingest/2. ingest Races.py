@@ -53,4 +53,4 @@ display(races_selected_df)
 
 # COMMAND ----------
 
-
+dbutils.notebook.exit("2. ingest Races - Success")

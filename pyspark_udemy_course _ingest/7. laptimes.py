@@ -34,4 +34,4 @@ display(final_df)
 
 # COMMAND ----------
 
-
+dbutils.notebook.exit("7. laptimes - Success")

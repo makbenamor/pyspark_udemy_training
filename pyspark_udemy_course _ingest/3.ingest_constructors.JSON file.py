@@ -38,4 +38,4 @@ display(df_constructors)
 
 # COMMAND ----------
 
-
+dbutils.notebook.exit("3.ingest_constructors.JSON file - Success")

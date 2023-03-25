@@ -56,4 +56,4 @@ display(results_final_df)
 
 # COMMAND ----------
 
-
+dbutils.notebook.exit("5.Ingest result file - Success")
