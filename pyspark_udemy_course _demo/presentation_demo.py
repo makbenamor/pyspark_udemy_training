@@ -171,11 +171,7 @@ df_final.display()
 
 # COMMAND ----------
 
-df_outputdf_output=demo_grouped.filter('race_year in (2020, 2019)').orderBy('race_year',desc_nulls_last('total_points'))
-
-# COMMAND ----------
-
-df_output.display()
+df_output=demo_grouped.filter('race_year in (2020, 2019)').orderBy('race_year',desc_nulls_last('total_points'))
 
 # COMMAND ----------
 
