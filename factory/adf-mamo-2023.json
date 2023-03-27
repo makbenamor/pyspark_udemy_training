@@ -1,0 +1,9 @@
+{
+	"name": "adf-mamo-2023",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ee0f498a-f6de-43e7-a5ee-060400214575",
+		"tenantId": "d9d36cad-cb86-49e8-8fc6-e2e86a22c274"
+	}
+}
