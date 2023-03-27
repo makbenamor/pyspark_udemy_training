@@ -1,4 +1,12 @@
 # Databricks notebook source
+# MAGIC %run "../pyspark_udemy_course _includes/configuration"
+
+# COMMAND ----------
+
+# MAGIC %run "../pyspark_udemy_course _includes/common_functions"
+
+# COMMAND ----------
+
 from pyspark.sql.types import * 
 from pyspark.sql.functions import *
 
@@ -23,7 +31,7 @@ schema_input = StructType(
 qualifying_df= spark.read \
  .schema(schema_input) \
 .option("multiLine", True) \
-.json('abfss://pyspark@sakimo2023.dfs.core.windows.net/raw/qualifying')
+.json(f'{raw_folder_path}/qualifying')
 
 # COMMAND ----------
 
@@ -35,7 +43,7 @@ final_df = qualifying_df.withColumnRenamed("qualifyId", "qualify_id") \
 
 # COMMAND ----------
 
-final_df.write.mode("overwrite").parquet("abfss://pyspark@sakimo2023.dfs.core.windows.net/processed/qualifying")
+final_df.write.mode("overwrite").parquet(f'{processed_folder_path}/qualifying')
 
 # COMMAND ----------
 

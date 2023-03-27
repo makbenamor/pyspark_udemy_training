@@ -1,9 +1,17 @@
 # Databricks notebook source
+# MAGIC %run "../pyspark_udemy_course _includes/common_functions"
+
+# COMMAND ----------
+
+# MAGIC %run "../pyspark_udemy_course _includes/configuration"
+
+# COMMAND ----------
+
 schema_input= "constructorId INT, constructorRef STRING , name STRING, nationality STRING, url STRING"
 
 # COMMAND ----------
 
-df_constructors= spark.read.json('abfss://pyspark@sakimo2023.dfs.core.windows.net/raw/constructors.json', schema=schema_input)
+df_constructors= spark.read.json(f'{raw_folder_path}/constructors.json', schema=schema_input)
 
 # COMMAND ----------
 
@@ -30,7 +38,7 @@ df_constructors=df_constructors.withColumnRenamed('constructorId','constructor_i
 
 # COMMAND ----------
 
-df_constructors.write.mode('overwrite').parquet("abfss://pyspark@sakimo2023.dfs.core.windows.net/processed/constructors")
+df_constructors.write.mode('overwrite').parquet(f'{processed_folder_path}/constructors')
 
 # COMMAND ----------
 

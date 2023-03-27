@@ -1,4 +1,12 @@
 # Databricks notebook source
+# MAGIC %run "../pyspark_udemy_course _includes/configuration"
+
+# COMMAND ----------
+
+# MAGIC %run "../pyspark_udemy_course _includes/common_functions"
+
+# COMMAND ----------
+
 from pyspark.sql.types import * 
 from pyspark.sql.functions import *
 
@@ -19,7 +27,7 @@ races_schema = StructType(fields=[StructField("raceId", IntegerType(), False),
 races_df= spark.read \
  .option("header", True) \
  .schema(races_schema) \
- .csv("abfss://pyspark@sakimo2023.dfs.core.windows.net/raw/races.csv")
+ .csv(f'{raw_folder_path}/races.csv')
              
 
 # COMMAND ----------
@@ -45,7 +53,7 @@ races_selected_df = races_with_timestamp_df.select(
 
 # COMMAND ----------
 
-races_selected_df.write.mode('overwrite').partitionBy('race_year').parquet('abfss://pyspark@sakimo2023.dfs.core.windows.net/processed/races')
+races_selected_df.write.mode('overwrite').partitionBy('race_year').parquet(f'{processed_folder_path}/races')
 
 # COMMAND ----------
 

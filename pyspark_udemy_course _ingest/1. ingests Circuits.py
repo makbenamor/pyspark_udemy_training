@@ -1,9 +1,9 @@
 # Databricks notebook source
-# MAGIC %run "../PySpark Udemy course - includes/Configuration"
+# MAGIC %run "../pyspark_udemy_course _includes/configuration"
 
 # COMMAND ----------
 
-# MAGIC %run "../PySpark Udemy course - includes/common_functions"
+# MAGIC %run "../pyspark_udemy_course _includes/common_functions"
 
 # COMMAND ----------
 
@@ -55,7 +55,7 @@ circuits_schema
 df_circuits = spark.read \
     .option('header', True) \
     .schema(circuits_schema) \
-    .csv("abfss://pyspark@sakimo2023.dfs.core.windows.net/raw/circuits.csv")
+    .csv(f'{raw_folder_path}/circuits.csv')
 
 # COMMAND ----------
 

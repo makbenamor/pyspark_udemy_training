@@ -7,6 +7,14 @@
 
 # COMMAND ----------
 
+# MAGIC %run "../pyspark_udemy_course _includes/common_functions"
+
+# COMMAND ----------
+
+# MAGIC %run "../pyspark_udemy_course _includes/configuration"
+
+# COMMAND ----------
+
 from pyspark.sql.types import * 
 
 # COMMAND ----------
@@ -34,7 +42,7 @@ input_schema= StructType(fields=[StructField("driverId", IntegerType(), False),
 # Read the Json file to the DF
 drivers_df = spark.read \
 .schema(input_schema) \
-.json("abfss://pyspark@sakimo2023.dfs.core.windows.net/raw/drivers.json")
+.json(f'{raw_folder_path}/drivers.json')
 
 # COMMAND ----------
 
@@ -53,7 +61,7 @@ drivers_final_df = drivers_with_columns_df.drop(col("url"))
 
 # COMMAND ----------
 
-drivers_final_df.write.mode("overwrite").parquet('abfss://pyspark@sakimo2023.dfs.core.windows.net/processed/Drivers')
+drivers_final_df.write.mode("overwrite").parquet(f'{processed_folder_path}/Drivers')
 
 # COMMAND ----------
 

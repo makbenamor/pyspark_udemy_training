@@ -1,4 +1,12 @@
 # Databricks notebook source
+# MAGIC %run "../pyspark_udemy_course _includes/configuration"
+
+# COMMAND ----------
+
+# MAGIC %run "../pyspark_udemy_course _includes/common_functions"
+
+# COMMAND ----------
+
 from pyspark.sql.types import * 
 from pyspark.sql.functions import *
 
@@ -27,7 +35,7 @@ results_schema = StructType(fields=[StructField("resultId", IntegerType(), False
 
 results_df = spark.read \
 .schema(results_schema) \
-.json("abfss://pyspark@sakimo2023.dfs.core.windows.net/raw/results.json")
+.json(f'{raw_folder_path}/results.json')
 
 # COMMAND ----------
 
@@ -48,7 +56,7 @@ results_final_df = results_with_columns_df.drop(col("statusId"))
 
 # COMMAND ----------
 
-results_final_df.write.mode("overwrite").partitionBy('race_id').parquet("abfss://pyspark@sakimo2023.dfs.core.windows.net/processed/results")
+results_final_df.write.mode("overwrite").partitionBy('race_id').parquet(f'{processed_folder_path}/results')
 
 # COMMAND ----------
 

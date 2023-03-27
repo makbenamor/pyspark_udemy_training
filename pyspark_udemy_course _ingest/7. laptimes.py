@@ -1,4 +1,12 @@
 # Databricks notebook source
+# MAGIC %run "../pyspark_udemy_course _includes/configuration"
+
+# COMMAND ----------
+
+# MAGIC %run "../pyspark_udemy_course _includes/common_functions"
+
+# COMMAND ----------
+
 from pyspark.sql.types import * 
 from pyspark.sql.functions import *
 
@@ -16,7 +24,7 @@ lap_times_schema = StructType(fields=[StructField("raceId", IntegerType(), False
 
 lap_times_df = spark.read \
 .schema(lap_times_schema) \
-.csv("abfss://pyspark@sakimo2023.dfs.core.windows.net/raw/lap_times")
+.csv(f'{raw_folder_path}/lap_times')
 
 # COMMAND ----------
 
@@ -26,7 +34,7 @@ final_df = lap_times_df.withColumnRenamed("driverId", "driver_id") \
 
 # COMMAND ----------
 
-final_df.write.mode("overwrite").parquet("abfss://pyspark@sakimo2023.dfs.core.windows.net/processed/lap_times")
+final_df.write.mode("overwrite").parquet(f'{processed_folder_path}/lap_times')
 
 # COMMAND ----------
 
