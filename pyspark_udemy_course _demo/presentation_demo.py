@@ -181,7 +181,7 @@ from pyspark.sql.functions import *
 # COMMAND ----------
 
 driver_rank= Window.partitionBy('race_year').orderBy(desc_nulls_last('total_points'))
-df_output.withColumn('rank',rank().over(driver_rank)).show(100)
+df_output.withColumn('rank',rank().over(driver_rank))
 
 # COMMAND ----------
 

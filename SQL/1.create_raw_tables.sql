@@ -29,7 +29,7 @@ alt INT,
 url STRING
 )
 USING csv
-OPTIONS (path "/dbfs/FileStore/raw/circuits.csv", header true)
+OPTIONS (path= 'abfss://pyspark@sakimo2024.dfs.core.windows.net/raw/circuits.csv', header=true)
 
 -- COMMAND ----------
 
@@ -80,7 +80,7 @@ name STRING,
 nationality STRING,
 url STRING)
 USING json
-OPTIONS(path "/mnt/formula1dl/raw/constructors.json")
+OPTIONS(path "abfss://pyspark@sakimo2024.dfs.core.windows.net/raw/constructors.json")
 
 -- COMMAND ----------
 
@@ -106,7 +106,7 @@ dob DATE,
 nationality STRING,
 url STRING)
 USING json
-OPTIONS (path "/mnt/formula1dl/raw/drivers.json")
+OPTIONS (path "abfss://pyspark@sakimo2024.dfs.core.windows.net/raw/drivers.json")
 
 -- COMMAND ----------
 
@@ -136,7 +136,7 @@ fastestLapTime STRING,
 fastestLapSpeed FLOAT,
 statusId STRING)
 USING json
-OPTIONS(path "/mnt/formula1dl/raw/results.json")
+OPTIONS(path "abfss://pyspark@sakimo2024.dfs.core.windows.net/raw/results.json")
 
 -- COMMAND ----------
 
@@ -161,7 +161,7 @@ raceId INT,
 stop INT,
 time STRING)
 USING json
-OPTIONS(path "/mnt/formula1dl/raw/pit_stops.json", multiLine true)
+OPTIONS(path "abfss://pyspark@sakimo2024.dfs.core.windows.net/raw/pit_stops.json", multiLine true)
 
 -- COMMAND ----------
 
@@ -191,7 +191,7 @@ time STRING,
 milliseconds INT
 )
 USING csv
-OPTIONS (path "/mnt/formula1dl/raw/lap_times")
+OPTIONS (path "abfss://pyspark@sakimo2024.dfs.core.windows.net/raw/lap_times")
 
 -- COMMAND ----------
 
@@ -219,7 +219,7 @@ q3 STRING,
 qualifyId INT,
 raceId INT)
 USING json
-OPTIONS (path "/mnt/formula1dl/raw/qualifying", multiLine true)
+OPTIONS (path "abfss://pyspark@sakimo2024.dfs.core.windows.net/raw/qualifying", multiLine true)
 
 -- COMMAND ----------
 

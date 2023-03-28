@@ -1,5 +1,6 @@
 -- Databricks notebook source
 CREATE DATABASE IF NOT EXISTS demo;
+Use demo;
 
 -- COMMAND ----------
 
@@ -23,7 +24,7 @@ SELECT * FROM demo.race_results_table
 
 -- COMMAND ----------
 
-DESC EXTENDED race_results_table 
+DESC EXTENDED demo.race_results_table
 
 -- COMMAND ----------
 
@@ -31,9 +32,13 @@ CREATE TABLE IF NOT EXISTS race_results_sql AS
 SELECT
   *
 FROM
-race_results_table
+demo.race_results_table
 where race_year =2020;
 
 -- COMMAND ----------
 
 SELECT * FROM race_results_sql
+
+-- COMMAND ----------
+
+-- Create external tables

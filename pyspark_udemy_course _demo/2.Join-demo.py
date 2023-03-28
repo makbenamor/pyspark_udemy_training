@@ -15,7 +15,7 @@ circuits_df.display()
 
 # COMMAND ----------
 
-race_circuits_df=circuits_df.join(races_df, circuits_df.circuit_id==races_df.circuit_id).select(circuits_df.name, circuits_df.location, circuits_df.country, races_df.name, races_df.round)
+race_circuits_df=circuits_df.join(races_df, circuits_df.circuit_id==races_df.circuit_id).select(circuits_df.circuit_name, circuits_df.location, circuits_df.country, races_df.race_name, races_df.round) 
 
 # COMMAND ----------
 

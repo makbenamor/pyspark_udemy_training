@@ -108,11 +108,20 @@ df_circuits.write.mode('overwrite').parquet(f"{processed_folder_path}/circuits")
 
 # COMMAND ----------
 
-dbutils.widgets.help()
+dbutils.widgets.text('p_data_source','')
 
 # COMMAND ----------
 
-dbutils.widgets.text('p_data_source','')
+df_circuits.write.mode("overwrite").format("parquet").saveAsTable("f1_processed.circuits")
+
+# COMMAND ----------
+
+display(spark.read.parquet(f"{processed_folder_path}/circuits"))
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT * FROM f1_processed.circuits;
 
 # COMMAND ----------
 
