@@ -1,5 +1,5 @@
 {
-	"name": "Raw_data_blobst",
+	"name": "source_Raw_data_blobst",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Blob_Storage_bstorageeurostat",
