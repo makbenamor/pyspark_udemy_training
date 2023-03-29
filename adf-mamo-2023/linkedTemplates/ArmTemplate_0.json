@@ -132,6 +132,7 @@
 						"container": "blob-ingest-raw"
 					},
 					"columnDelimiter": ",",
+					"compressionCodec": "gzip",
 					"escapeChar": "\\",
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
