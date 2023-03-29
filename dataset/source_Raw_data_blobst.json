@@ -16,7 +16,7 @@
 				"fileName": "population_by_age.tsv.gz",
 				"container": "blob-ingest-raw"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "\t",
 			"compressionCodec": "gzip",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
