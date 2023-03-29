@@ -1,0 +1,25 @@
+{
+	"name": "sink1_raw_ADLS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DataLakeStorage_sakimo2024",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Covid_datasets"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "1.raw_files",
+				"fileSystem": "raw-files-covid"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
