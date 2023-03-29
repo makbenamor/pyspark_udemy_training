@@ -5,11 +5,17 @@
 		"factoryName": {
 			"value": "adf-mamo-2023"
 		},
-		"AzureDatabricks1_accessToken": {
+		"Blob_Storage_bstorageeurostat_connectionString": {
+			"value": ""
+		},
+		"DataLakeStorage_sakimo2024_accountKey": {
 			"value": ""
 		},
 		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
 			"value": "0327-110020-m63kpskf"
+		},
+		"DataLakeStorage_sakimo2024_properties_typeProperties_url": {
+			"value": "https://sakimo2024.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"value": ""

@@ -7,13 +7,21 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-mamo-2023"
 		},
-		"AzureDatabricks1_accessToken": {
+		"Blob_Storage_bstorageeurostat_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
+			"metadata": "Secure string for 'connectionString' of 'Blob_Storage_bstorageeurostat'"
+		},
+		"DataLakeStorage_sakimo2024_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'DataLakeStorage_sakimo2024'"
 		},
 		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
 			"type": "string",
 			"defaultValue": "0327-110020-m63kpskf"
+		},
+		"DataLakeStorage_sakimo2024_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sakimo2024.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -42,11 +50,17 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"AzureDatabricks1_accessToken": {
-						"value": "[parameters('AzureDatabricks1_accessToken')]"
+					"Blob_Storage_bstorageeurostat_connectionString": {
+						"value": "[parameters('Blob_Storage_bstorageeurostat_connectionString')]"
+					},
+					"DataLakeStorage_sakimo2024_accountKey": {
+						"value": "[parameters('DataLakeStorage_sakimo2024_accountKey')]"
 					},
 					"AzureDatabricks1_properties_typeProperties_existingClusterId": {
 						"value": "[parameters('AzureDatabricks1_properties_typeProperties_existingClusterId')]"
+					},
+					"DataLakeStorage_sakimo2024_properties_typeProperties_url": {
+						"value": "[parameters('DataLakeStorage_sakimo2024_properties_typeProperties_url')]"
 					}
 				}
 			},
