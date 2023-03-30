@@ -90,7 +90,7 @@
 							"type": "Copy",
 							"dependsOn": [
 								{
-									"activity": "Wait1",
+									"activity": "Wait_true",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -151,7 +151,7 @@
 							]
 						},
 						{
-							"name": "Wait1",
+							"name": "Wait_true",
 							"type": "Wait",
 							"dependsOn": [],
 							"userProperties": [],
