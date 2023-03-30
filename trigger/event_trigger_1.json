@@ -13,7 +13,7 @@
 		],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
-			"blobPathBeginsWith": "/blob-ingest-raw/blobs/population_by_age.tsv.gz",
+			"blobPathBeginsWith": "/blob-ingest-raw/blobs/population_by_age",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/47f66aa8-8d49-4acd-85a1-3370d33b0508/resourceGroups/rgmamor/providers/Microsoft.Storage/storageAccounts/bstorageeurostat",
 			"events": [
