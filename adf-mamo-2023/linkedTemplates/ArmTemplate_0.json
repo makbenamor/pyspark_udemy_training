@@ -22,6 +22,10 @@
 		"DataLakeStorage_sakimo2024_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sakimo2024.dfs.core.windows.net/"
+		},
+		"event_trigger_1_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/47f66aa8-8d49-4acd-85a1-3370d33b0508/resourceGroups/rgmamor/providers/Microsoft.Storage/storageAccounts/bstorageeurostat"
 		}
 	},
 	"variables": {
@@ -351,6 +355,39 @@
 									"typeProperties": {
 										"waitTimeInSeconds": 3
 									}
+								},
+								{
+									"name": "Delete1",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "Copy data1",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "source_Raw_data_blobst",
+											"type": "DatasetReference",
+											"parameters": {}
+										},
+										"enableLogging": false,
+										"storeSettings": {
+											"type": "AzureBlobStorageReadSettings",
+											"recursive": true,
+											"enablePartitionDiscovery": false
+										}
+									}
 								}
 							]
 						}
@@ -368,6 +405,37 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/source_Raw_data_blobst')]",
 				"[concat(variables('factoryId'), '/datasets/sink1_raw_ADLS')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/event_trigger_1')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "copy_from_SA_to_ADLS_validation",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/blob-ingest-raw/blobs/population_by_age.tsv.gz",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('event_trigger_1_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated",
+						"Microsoft.Storage.BlobDeleted"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/copy_from_SA_to_ADLS_validation')]"
 			]
 		}
 	]

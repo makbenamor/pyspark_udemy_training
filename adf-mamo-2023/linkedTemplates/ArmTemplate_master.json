@@ -23,6 +23,10 @@
 			"type": "string",
 			"defaultValue": "https://sakimo2024.dfs.core.windows.net/"
 		},
+		"event_trigger_1_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/47f66aa8-8d49-4acd-85a1-3370d33b0508/resourceGroups/rgmamor/providers/Microsoft.Storage/storageAccounts/bstorageeurostat"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -61,6 +65,9 @@
 					},
 					"DataLakeStorage_sakimo2024_properties_typeProperties_url": {
 						"value": "[parameters('DataLakeStorage_sakimo2024_properties_typeProperties_url')]"
+					},
+					"event_trigger_1_properties_typeProperties_scope": {
+						"value": "[parameters('event_trigger_1_properties_typeProperties_scope')]"
 					}
 				}
 			},
